@@ -1,0 +1,46 @@
+﻿@using Webmarket.Modelss
+@model  IEnumerable<Product>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<partial name="_Notification" />
+
+<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+
+
+<div class="container mt-3 bg-info border shadow-lg">
+
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-white"> List Product </h2>
+        </div>
+        <div class="col-6 text-end">
+            <a asp-area="Admin" asp-controller="Product" asp-action="Upsert" class="btn btn-outline-primary"> <i class="bi bi-plus-circle-fill"></i> Create new Category</a>
+        </div>
+
+    </div>
+  
+  <p></p>            
+      <table id="tblData"  class="table table-dark table-striped table-bordered  ">
+        <thead>
+              <tr >
+             <th> Name Product </th>
+             <th> ISBN </th>
+             <th>  Preis</th>
+             <th> Autor </th>
+             <th> Kategory </th>
+             
+             <th> </th>
+             
+                    
+              </tr>
+        </thead>
+          
+      </table>
+</div>
+
+
+@section Scripts{
+    <script src="~/js/Product.js"></script>
+}

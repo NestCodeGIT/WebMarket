@@ -1,0 +1,155 @@
+﻿@using Webmarket.Modelss.ViewModel
+@model ProductVM
+@{
+    ViewData["Title"] = "Upsert";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h1 class="text-white">Upsert</h1>
+
+
+
+    <form method="post" asp-action="Upsert" enctype="multipart/form-data" class=" " style="height:1300px">
+          <input  asp-for="Product.Id" hidden/>
+        <input  asp-for="Product.ImgeUrl" hidden/>
+        <div class="border p-3 mt-4 bg-secondary">
+            <div class="row pb-2 text-white fw-bold">
+                <h2 >@(Model.Product.Id !=0 ? "Edit" : "Create")</h2>
+                <hr />
+            </div>
+       
+            <div class="mb-3">
+                <label asp-for="Product.Title"></label>
+                <input asp-for="Product.Title"  class="form-control shadow-lg"/>
+                <span asp-validation-for="Product.Title" class="text-danger"></span>
+
+            </div>
+              <div class="mb-3">
+                <label asp-for="Product.Description"></label>
+                <textarea rows="10"  asp-for="Product.Description"  class="form-control shadow-lg"></textarea>
+                <span asp-validation-for="Product.Description" class="text-danger"></span>
+
+            </div>
+              <div class="mb-3">
+                <label asp-for="Product.ShortDescription"></label>
+                <textarea rows="5" asp-for="Product.ShortDescription"  class="form-control shadow-lg"></textarea>
+                <span asp-validation-for="Product.ShortDescription" class="text-danger"></span>
+
+            </div>
+
+
+           <div class="row">
+
+                  <div class="col-6 mb-3">
+                <label asp-for="Product.ISBN"></label>
+                <input asp-for="Product.ISBN"  class="form-control shadow-lg"/>
+                <span asp-validation-for="Product.ISBN" class="text-danger"></span>
+
+             </div>
+              <div class="col-6 mb-3">
+                <label asp-for="Product.Author"></label>
+                <input asp-for="Product.Author"  class="form-control shadow-lg"/>
+                <span asp-validation-for="Product.Author" class="text-danger"></span>
+
+          
+
+              </div>
+
+           </div>
+
+
+            <div class="row">
+                  <div class="col-6 mb-3">
+                    <label asp-for="Product.Price"></label>
+                    <input asp-for="Product.Price"  class="form-control shadow-lg"/>
+                    <span asp-validation-for="Product.Price" class="text-danger"></span>
+
+                  </div>
+                  <div class="col-6 mb-3">
+                    <label asp-for="Product.Price50"></label>
+                    <input asp-for="Product.Price50"  class="form-control shadow-lg"/>
+                    <span asp-validation-for="Product.Price50" class="text-danger"></span>
+
+                  </div>
+            </div>
+
+
+            <div class="row">
+                  <div class="col-6 mb-3">
+                <label asp-for="Product.Price100"></label>
+                <input asp-for="Product.Price100"  class="form-control shadow-lg"/>
+                <span asp-validation-for="Product.Price100" class="text-danger"></span>
+
+                 </div>
+                  <div class="col-6 mb-3">
+                    <label asp-for="Product.ImgeUrl"></label>
+                    <input id="uploadBox" type="file" name="file"  class="form-control shadow-lg"/>
+                    
+
+                  </div>
+
+            </div>
+            
+
+                   <div class="mb-3">
+                    <label asp-for="Product.CategoryId"></label>
+                    <select asp-for="Product.CategoryId" asp-items="@Model.CategoryList" class="form-select ">
+                        <option disabled selected> Category Wähllen</option>
+                    </select>
+               
+                    <span asp-validation-for="Product.CategoryId" class="text-danger"></span>
+
+
+                     </div>
+                  <div class="mb-3">
+                    <label asp-for="Product.CoverTypeId"></label>
+                     <select asp-for="Product.CoverTypeId" asp-items="@Model.CoverTypeList" class="form-select ">
+                    <option disabled selected> CoverType Wähllen</option>
+                     </select>
+                    <span asp-validation-for="Product.CoverTypeId" class="text-danger"></span>
+
+                  </div>
+                      <div class="mb-3 ">
+                    <label asp-for="Product.CreateDate"></label>
+                    <input asp-for="Product.CreateDate"  class="form-control shadow-lg border border-dark/>
+                    <span asp-validation-for="Product.CreateDate" class="text-danger"></span>
+
+                     </div>
+               
+         
+       
+           <div class="col_12">
+               @if(Model.Product.Id !=0)
+
+                {
+                    <button type="submit" onclick="return ValidationInput()"  class="btn btn-outline-danger " style="width:150px"> Edit</button>
+                }
+                else
+                {
+                     <button type="submit" class="btn btn-outline-danger " style="width:150px"> Create</button>
+                }
+                <a asp-area="Admin" asp-controller="Product" asp-action="Index" class="btn btn-outline-primary " style="width:150px"> Back</a>
+                
+                </div>
+
+           </div>
+    </form>
+
+  
+   @section Scripts {
+              <partial name="_ValidationScriptsPartial" />
+              <script>
+                    function ValidationInput() {
+                        if (document.getElementById("uploadBox").nodeValue == "" {
+
+                  Swal.fire({
+                              icon: 'error',
+                              title: 'Oops...',
+                              text: 'Something went wrong!',
+                              footer: '<a href="">Why do I have this issue?</a>'
+                            })
+                        })
+
+                    }
+              </script>
+          }

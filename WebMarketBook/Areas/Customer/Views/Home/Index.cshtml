@@ -1,0 +1,65 @@
+﻿@using Webmarket.Modelss
+@model IEnumerable<Product>
+@{
+    ViewData["Title"] = "Index";
+    
+
+
+
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Customer/Views/Shared/_Layout.cshtml";
+}
+
+   
+<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+
+
+ 
+<div class="card-group">
+
+        <div class="row">
+    @foreach (var item in Model)
+    {
+
+    
+            <div class="col-4 mb-4">
+                <div class="card fotocustomor ">
+                   
+                            
+                           <div class="">
+								<div >
+                                    
+                                    
+										<div class="w  foto-tra"style="width:400px"  >
+                                           
+                                            <img class="card-img-top  fas fa-heart fa-plus " src="@item.ImgeUrl" >
+												
+												
+										</div>
+										
+								</div>
+						    </div>
+                                <div class="card-body">
+                                    <h5 class="card-title text-center">@item.Title</h5>
+                                    <hr/>
+                                    <p class="card-text">Name Autor : <b>@item.Author</b><br /> Grouping: <b>@item.Category.Name</b></p>
+                                    <small class="text-dark">@item.ShortDescription</small>
+                                </div>
+                                <div class="card-footer">
+                                    <b class="text-dark">@item.Price.ToString("#,000") Euro</b>
+                                    <a asp-area="Customer" asp-controller="Home" asp-action="ProductDetails"  asp-route-id="@item.Id" class="btn btn-primary float-end">Show Details</a>
+                                </div>
+                </div>
+              
+            </div>
+       
+    }   
+     </div>
+</div>
+
+ 
+
+
+
+
+
