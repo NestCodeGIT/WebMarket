@@ -1,4 +1,8 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+<!DOCTYPE html>
 <html lang="fa">
 <head>
     <meta charset="utf-8" />
@@ -32,9 +36,33 @@
                             <li><a class="dropdown-item" asp-area="Admin" asp-controller="Category" asp-action="Index">M-Category</a></li>
                             <li><a class="dropdown-item" asp-area="Admin" asp-controller="CoverType" asp-action="Index"> M-CoverType  </a></li>
                             <li><a class="dropdown-item" asp-area="Admin" asp-controller="Product" asp-action="Index"> M-Product</a></li>
+                            <li><a class="dropdown-item" asp-area="Admin" asp-controller="Company" asp-action="Index"> M-Company</a></li>
                         </ul>
                     </li>
                 </ul>
+                <ul class="navbar-nav">
+@if (SignInManager.IsSignedIn(User))
+{
+    <li class="nav-item">
+        <a id="manage" class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @UserManager.GetUserName(User)!</a>
+    </li>
+    <li class="nav-item">
+        <form id="logoutForm" class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+            <button id="logout" type="submit" class="nav-link btn btn-link text-dark">Logout</button>
+        </form>
+    </li>
+}
+else
+{
+    <li class="nav-item">
+        <a class="nav-link text-dark" id="register" asp-area="Identity" asp-page="/Account/Register">Register</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link text-dark" id="login" asp-area="Identity" asp-page="/Account/Login">Login</a>
+    </li>
+}
+</ul>
+
                 <form class="d-flex">
                     <button class="btn btn-outline-dark" type="submit">
                         <i class="bi-cart-fill me-1"></i>
@@ -76,7 +104,7 @@
           <footer class="bg-dark">    
                      
                      
-               <div style="wight:400px " class="bg-black">
+               <div  class="bg-black">
             
 
                <section class="bg-warning " >

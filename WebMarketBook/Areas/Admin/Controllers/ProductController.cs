@@ -98,7 +98,7 @@ namespace WebMarketBook.Areas.Admin.Controllers
                     {
                         file.CopyTo(fileStrems);
                     }
-                    obj.Product.ImgeUrl = @"images/products/" + fileName+ extention;
+                    obj.Product.ImgeUrl =  fileName+ extention;
                 }
               
 

@@ -21,6 +21,7 @@ namespace WebMarket.DataAccess.Services
         public void Add( Category entity)
         {
             _db.Categories.Add(entity);
+            _db.SaveChanges();
 
         }
 
@@ -40,23 +41,24 @@ namespace WebMarket.DataAccess.Services
         public void Remove(Category entity)
         {
             _db.Categories.Remove(entity);
-            //_db.SaveChanges();
+            _db.SaveChanges();
         }
 
         public void RemoveRange(IEnumerable<Category> entities)
         {
             _db.Categories.RemoveRange(entities);
-            //_db.SaveChanges();
-        }
-        public void Save()
-        {
             _db.SaveChanges();
         }
+        //public void Save()
+        //{
+        //    _db.SaveChanges();
+        //}
 
         public void Update(Category category)
         {
             _db.Categories.Update(category);
-            
+            _db.SaveChanges();
+
         }
 
     }

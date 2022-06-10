@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace Webmarket.Utility
 {
-    internal class SD
+    public static class SD
     {
+        public const string Role_User = "User";
+        public const string Role_Company = "Company";
+        public const string Role_Admin = "Admin";
+        public const string Role_Employee = "Employee";
     }
 }
